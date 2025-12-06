@@ -20,6 +20,8 @@ psy.cfg
 /atlassian-ide-plugin.xml
 _misc
 /.vscode
+/.github
+
 # local history should not be added to github 
 /.history
 
