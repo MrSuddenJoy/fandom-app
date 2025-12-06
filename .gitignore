@@ -38,18 +38,11 @@ npm-debug.log
 
 # Ignore eval.php log
 maintenance/.mweval_history
-
 composer.phar
-
 /messageCache
-
 tests/build
 tests/coverage
-
 /HeadlessChrome_*
-
 lib/Swagger/swagger-codegen-cli.jar
-
 .phplint-cache
-
 docker/devbox/.env
