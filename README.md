@@ -1,4 +1,3 @@
-# Wikia MediaWiki app [![Build Status](https://travis-ci.org/Wikia/app.svg?branch=dev)](https://travis-ci.org/Wikia/app)
 ## About this repository
 This is the source code of [FANDOM's](http://fandom.wikia.com/explore) custom MediaWiki 1.19 installation, including extensions.
 
