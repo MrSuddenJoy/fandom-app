@@ -11,6 +11,8 @@
     },
     "globals": {
         "document": false,
-        "window": false
+        "window": false,
+        "navigator": false,
+        "console": true
     }
 }

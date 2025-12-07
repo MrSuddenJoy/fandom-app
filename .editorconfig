@@ -11,6 +11,7 @@ indent_style = tab
 insert_final_newline = true
 max_line_length = 120 # Vim
 trim_trailing_whitespace = true
+
 # Vim JsBeautify Settings
 break_chained_methods = false
 indent_level = 0
@@ -37,3 +38,8 @@ max_line_length = 120 # Vim
 [**.yaml]
 indent_size = 2
 indent_style = space
+
+[**.md]
+trim_trailing_whitespace = false,
+max_line_length = 80
+end_of_line = lf
