@@ -5,7 +5,6 @@
   To regenerate the chosen sprite issue this command on your devbox (replace SPRITE_NAME with one of the configured below):
     SERVER_ID=177 php /usr/wikia/source/wiki/maintenance/wikia/generateSprites.php --sprite SPRITE_NAME
   However if you skip the sprite parameter the script will go through entire configuration file and regenerate them.
-
 */
 
 
@@ -21,10 +20,10 @@ $config['oasis'] = array(
 */
 
 $config['EditPageLayout'] = array(
-	'name'   => 'edit-page',
-	'source' => "$IP/extensions/wikia/EditPageLayout/images/sprite-edit-page/",
-	'sprite' => "$IP/extensions/wikia/EditPageLayout/images/sprite-edit-page.png",
-	'scss'   => "$IP/extensions/wikia/EditPageLayout/css/mixins/_sprite-edit-page.scss",
+	'name'   => 'edit-this-page',
+	'source' => "$IP/extensions/wikia/EditPageLayout/images/sprite-edit-this-page/",
+	'sprite' => "$IP/extensions/wikia/EditPageLayout/images/sprite-edit-this-page.png",
+	'scss'   => "$IP/extensions/wikia/EditPageLayout/css/mixins/_sprite-edit-this-page.scss",
 	/*
 	// POSTPROCESSING EXAMPLE
 	// Use [INPUT] and [OUTPUT] in the command
