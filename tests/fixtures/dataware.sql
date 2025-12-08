@@ -12,3 +12,24 @@ CREATE TABLE `pages` (
 );
 
 CREATE INDEX `page_title_namespace_latest_idx` ON `pages` (`page_title`,`page_namespace`,`page_latest`);
+-- Dump completed on 2024-06-15 12:00:00
+
+CREATE TABLE `users` (
+  `user_id` int unsigned NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(255) NOT NULL,
+  `user_email` varchar(255) DEFAULT NULL,
+  `user_created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`user_id`)
+);
+
+CREATE INDEX `user_name_idx` ON `users` (`user_name`);
+-- Dump completed on 2024-06-15 12:00:00
+
+CREATE TABLE `revisions` (
+  `rev_id` int unsigned NOT NULL AUTO_INCREMENT,
+  `rev_page` int unsigned NOT NULL,
+  `rev_text_id` int unsigned NOT NULL,
+  `rev_user` int unsigned DEFAULT NULL,
+  `rev_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`rev_id`)
+);
