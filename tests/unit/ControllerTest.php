@@ -1,22 +1,29 @@
 <?php
 
+// Copyright 2010-2024 Wikia, Inc.
+// All rights reserved.
+// This file is part of Wikia, Inc. softwar
 class ControllerTest extends WikiaBaseTest {
 
+	// Set up autoloading for test controllers and services
 	function setUp() {
 		global $wgAutoloadClasses, $IP;
 
+		// Controllers and services used in these tests
 		$wgAutoloadClasses['UnitTestController'] = dirname( __FILE__ ) . '/controllers/UnitTestController.class.php';
 		$wgAutoloadClasses['UnitTestService'] = dirname( __FILE__ ) . '/controllers/UnitTestService.class.php';
 		$wgAutoloadClasses['OasisTemplate'] = $IP . '/skins/Oasis.php';
 
+		// Call parent setUp()
 		parent::setUp();
 	}
 
+	// Tear down autoloading for test controllers and services
 	function testDispatchingToController() {
 		$response = F::app()->sendRequest('UnitTest');
 		$this->assertEquals('Foo', $response->getVal('foo'));
 	}
-
+	
 	function testDispatchingToService() {
 		$response = F::app()->sendRequest('UnitTestService');
 		$this->assertEquals('Yes', $response->getVal('service'));
@@ -37,6 +44,21 @@ class ControllerTest extends WikiaBaseTest {
 	/**
 	 * @group Slow
 	 * @slowExecutionTime 0.02133 ms
+	 * @covers Wikia::link
+	 * @uses Title
+	 * @uses Wikia::specialPageLink
+	 * @uses Wikia::getUrlForTitle
+	 * @uses Wikia::getTitleForLink
+	 * @uses Wikia::getFragmentForLink
+	 * @uses Wikia::getInterwikiForLink
+	 * @uses Title::getDBkey
+	 * @uses Title::getNamespace
+	 * @uses Title::getFragment
+	 * @uses Title::getInterwiki
+	 * @uses Title::getLinkURL
+	 * @uses Title::getPrefixedText
+	 * @uses Title::isKnown
+	 * @uses Title::isExternal
 	 */
 	function testWikiaLink() {
 		$titleMock = $this->createMock( Title::class );

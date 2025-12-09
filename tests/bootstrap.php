@@ -1,5 +1,6 @@
 <?php
 
+// Enable error reporting for tests
 error_reporting( E_ALL );
 ini_set( 'display_errors', 1 );
 ini_set( 'memory_limit', '256M' );
@@ -15,16 +16,14 @@ $IP = __DIR__ . '/..';
 
 define( 'MEDIAWIKI', true );
 
+# Load core
 require_once "$IP/includes/Init.php";
 require_once "$IP/includes/AutoLoader.php";
-
 require_once "$IP/includes/Defines.php";
-
 require_once "$IP/LocalSettings.php";
-
 require_once "$IP/includes/Setup.php";
 
-// base classes for tests
+# base classes for tests
 $wgAutoloadClasses['ApiIntegrationTestTrait'] = $IP . '/includes/wikia/tests/core/ApiIntegrationTestTrait.php';
 $wgAutoloadClasses['WikiaBaseTest'] = $IP . '/includes/wikia/tests/core/WikiaBaseTest.class.php';
 $wgAutoloadClasses['WikiaDatabaseTest'] = $IP . '/includes/wikia/tests/core/WikiaDatabaseTest.php';
@@ -35,13 +34,19 @@ $wgAutoloadClasses['WikiaMockProxyInvocation'] = $IP . '/includes/wikia/tests/co
 $wgAutoloadClasses['MockGlobalVariableTrait'] = $IP . '/includes/wikia/tests/core/MockGlobalVariableTrait.php';
 $wgAutoloadClasses['MockEnvironmentTrait'] = $IP . '/includes/wikia/tests/core/MockEnvironmentTrait.php';
 
-// This is needed to properly support PHPUnit's process isolation feature
-// We are not using the official PHPUnit entry point, so we need to tell PHPUnit that it was installed via composer.
+/** This is needed to properly support PHPUnit's process isolation feature
+ *  We are not using the official PHPUnit entry point, so we need to tell PHPUnit that it was installed via composer.
+ * @todo: #2 remove when we switch to official PHPUnit entry point
+ */
 if ( !defined( 'PHPUNIT_COMPOSER_INSTALL' ) ) {
 	define( 'PHPUNIT_COMPOSER_INSTALL', "$IP/lib/composer/autoload.php" );
 }
 
+// Use a null cache to avoid caching between tests
 $wgWikiFactoryCacheType = CACHE_NONE;
+
+// Use an empty memcached bag to avoid caching between tests
 $wgMemc = new EmptyBagOStuff();
 
+// Disable TaskBroker during tests
 $wgTaskBrokerDisabled = true;
