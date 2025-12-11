@@ -22,7 +22,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @todo Report PHP version, OS ..
+ * @todo #5 Report PHP version, OS ..
  * @file
  * @ingroup Benchmark
  */

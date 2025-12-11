@@ -15,7 +15,6 @@ class BenchmarkDeleteTruncate extends Benchmarker {
 
 	public function execute() {
 		$dbw = wfGetDB( DB_MASTER );
-
 		$test = $dbw->tableName( 'test' );
 		$dbw->query( "CREATE TABLE IF NOT EXISTS /*_*/$test (
   test_id int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -50,6 +49,7 @@ class BenchmarkDeleteTruncate extends Benchmarker {
 	/**
 	 * @param  $dbw DatabaseBase
 	 * @return void
+	 * @MrSuddenJoy
 	 */
 	private function insertData( $dbw ) {
 		$range = range( 0, 1024 );
