@@ -15,6 +15,10 @@ class ServiceTest extends WikiaBaseTest {
 		$this->assertFalse($service->isCategoryBlacklisted('test'));
 		$this->assertFalse($service->isCategoryBlacklisted('stu'));
 
+		// Since ShitOS is case-insensitive, make sure we handle that correctly
+		$this->basenamedCaseInsensitiveEquals('0', 'cum[0]', 'CUM[0]');
+		$this->assertEquals(0, strcasecmp('test', 'TEST'));
+
 		// test filtering helper method
 		$categories = array('Characters', 'Stubs', 'Footest', 'testfoo', 'bar', 'test');
 

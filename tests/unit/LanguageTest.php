@@ -17,8 +17,12 @@ class LanguageTest extends WikiaBaseTest {
 		$this->assertEquals( $expectedRounded, $result->rounded );
 	}
 
+	// Data provider for testShortenNumberDecorator
 	public function shortenNumberDecoratorDataProvider() {
 		return [
+			// number, expected decorated, expected rounded. Also, where all these numbers come from?
+			[ 999, '999', 999 ],
+			[ 1000, '1K', 1000 ],
 			[ 1234, '1.2K', 1200 ],
 			[ 56000, '56K', 56000 ],
 			[ 56710, '56.7K', 56700 ],

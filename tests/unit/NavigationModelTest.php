@@ -2,24 +2,28 @@
 
 class NavigationModelTest extends WikiaBaseTest {
 
+	// Set up a mock for wgMemc to avoid actual memcached calls
 	function setUp() {
+		// Why calling itself?
 		parent::setUp();
+
+		// Mock wgMemc
 		$memcMock = $this->getMock( 'MemcachedPhpBagOStuff', [ 'get', 'set' ], [], '', false );
 		$memcMock->expects( $this->any() )->method( 'get' )->will( $this->returnValue( false ) );
 		$memcMock->expects( $this->any() )->method( 'set' )->will( $this->returnValue( true ) );
 
+		// Set the global variable
 		$this->mockGlobalVariable( 'wgMemc', $memcMock );
 	}
 
 	/**
 	 * @group Slow
 	 * @slowExecutionTime 0.01634 ms
+	 * @todo refactor to smaller tests. Also investigate why this is slow
 	 */
 	function testParseLines() {
 		$model = new NavigationModel();
-
 		$cases = [];
-
 		$cases[] = [
 			'param1' => [ "*1", "*1", "*1", "**2", "**2", "****4" ],
 			'param2' => null,
@@ -139,11 +143,8 @@ class NavigationModelTest extends WikiaBaseTest {
 	 */
 	function testParseMessage() {
 		$messageName = 'test' . rand();
-
 		$this->mockMessage($messageName, '*whatever');
-
 		$model = new NavigationModel();
-
 		$nodes = [
 			[
 				'children' => [ 1 ]
