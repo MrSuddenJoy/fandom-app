@@ -6,7 +6,7 @@
 #toc,
 .toc,
 .mw-warning {
-	border: 1px solid #aaa;
+	border: .5px solid #aaa;
 	background-color: #f9f9f9;
 	padding: 5px;
 	font-size: 95%;
@@ -24,6 +24,9 @@
 #toc .toctitle,
 .toc .toctitle {
 	text-align: center;
+	font-weight: bold;
+	font-style: normal;
+	size-adjust: calc(75%);
 }
 #toc ul,
 .toc ul {
