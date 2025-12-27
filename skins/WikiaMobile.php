@@ -31,6 +31,13 @@ class SkinWikiaMobile extends WikiaSkin {
 		Hooks::run( 'WikiaSkinTopScripts', [ &$vars, &$scripts, $this ] );
 
 		// load ResourceLoader modules that have a short caching time
+		/**
+		 * Appends the output of renderTopShortTTLModules() to the $scripts variable.
+		 * This method likely returns JavaScript modules or scripts with a short time-to-live (TTL)
+		 * that should be included at the top of the page.
+		 *
+		 * @see self::renderTopShortTTLModules()
+		 */
 		$scripts .= $this->renderTopShortTTLModules();
 
 		//send list of supported videos so we can treat not supported ones differently
