@@ -1,0 +1,15 @@
+@media (prefers-color-scheme: dark) {
+    html {
+        filter: invert(100%) hue-rotate(180deg);
+    }
+
+    /* Re-inversion for images, videos */
+    html img:not(.navbar-brand .full),
+    html video {
+        filter: invert(100%) hue-rotate(180deg);;
+    }
+
+    html table:not([style*="table-layout: unset"]) {
+        filter: none;
+    }
+}
