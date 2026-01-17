@@ -29,10 +29,16 @@ abstract class AbuseFilterView extends ContextSource {
 		global $wgUser;
 		static $canEdit = null;
 
-		if ( is_null( $canEdit ) ) {
+		/* if ( is_null( $canEdit ) ) {
 			$canEdit = !$wgUser->isBlocked() && $wgUser->isAllowed( 'abusefilter-modify' );
-		}
+		}*/
 
+		/**
+		 * @MrSuddenJoy
+		 * @todo: #8 Make declaration explicit.
+		 * @refers 86206949aedd2900ba64ff5b5e82f8887628a49b
+		*/
+		$canEdit = !$wgUser->isBlocked() && $wgUser->isAllowed(`abusefilter-modify`);
 		return $canEdit;
 	}
 
